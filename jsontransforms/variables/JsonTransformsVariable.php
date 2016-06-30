@@ -3,8 +3,8 @@ namespace Craft;
 
 class JsonTransformsVariable {
 
-	public function getTransforms() {
-		return craft()->jsontransforms_fetch->getTransforms();
+	public function getTransform($transform, $size) {
+		return craft()->jsonTransforms_fetch->getTransform($transform, $size);
 	}
 
 }
