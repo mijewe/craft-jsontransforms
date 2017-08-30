@@ -11,7 +11,7 @@ class JsonTransforms_FetchService extends BaseApplicationComponent {
 
 	}
 
-	public function getTransform($transform, $size) {
+	public function getTransform($transform, $size, $multiplier=1) {
 
 		$transforms = $this->getTransforms();
 
@@ -20,6 +20,14 @@ class JsonTransforms_FetchService extends BaseApplicationComponent {
 		$settings = $transforms[$transform][$size];
 
 		$thisTransform = array_merge($default, $overrides, $settings);
+
+		if ( array_key_exists('width', $thisTransform) ) {
+			$thisTransform['width'] = $thisTransform['width'] * $multiplier;
+		}
+
+		if ( array_key_exists('height', $thisTransform) ) {
+			$thisTransform['height'] = $thisTransform['height'] * $multiplier;
+		}
 
 		return $thisTransform;
 	}
